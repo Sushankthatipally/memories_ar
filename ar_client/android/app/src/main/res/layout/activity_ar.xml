@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <!-- ARCore SceneView - Hardware accelerated AR -->
+    <io.github.sceneview.ar.ARSceneView
+        android:id="@+id/sceneView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Scan Guide Frame (shows corners to guide user) -->
+    <FrameLayout
+        android:id="@+id/scanGuide"
+        android:layout_width="280dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:visibility="visible">
+        
+        <!-- Top-left corner -->
+        <View
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="top|start"
+            android:background="@drawable/corner_top_left" />
+        
+        <!-- Top-right corner -->
+        <View
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="top|end"
+            android:background="@drawable/corner_top_right" />
+        
+        <!-- Bottom-left corner -->
+        <View
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom|start"
+            android:background="@drawable/corner_bottom_left" />
+        
+        <!-- Bottom-right corner -->
+        <View
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom|end"
+            android:background="@drawable/corner_bottom_right" />
+    </FrameLayout>
+
+    <!-- Loading spinner (shown while video loads) -->
+    <ProgressBar
+        android:id="@+id/loadingSpinner"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:indeterminateTint="@android:color/white" />
+
+    <!-- Top Bar with Back and Mute buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_marginTop="24dp">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/circle_bg"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:contentDescription="Back"
+            android:scaleType="centerInside"
+            android:padding="12dp"
+            app:tint="@android:color/black" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/muteButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/circle_bg"
+            android:src="@android:drawable/ic_lock_silent_mode_off"
+            android:contentDescription="Mute Toggle"
+            android:scaleType="centerInside"
+            android:padding="12dp"
+            app:tint="@android:color/black" />
+
+        <ImageButton
+            android:id="@+id/freezeButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/circle_bg"
+            android:src="@android:drawable/ic_menu_view"
+            android:contentDescription="Freeze Frame"
+            android:scaleType="centerInside"
+            android:padding="12dp"
+            android:visibility="gone"
+            app:tint="@android:color/black" />
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,45 @@
+name: ar_admin_dashboard
+description: Flutter Web admin panel for AR Album app - Studio dashboard to manage clients, albums, and AR content
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Firebase
+  firebase_core: ^4.2.1
+  firebase_auth: ^6.1.2
+  cloud_firestore: ^6.1.0
+
+  # Google Drive Storage
+  googleapis: ^15.0.0
+  google_sign_in: ^7.2.0
+  http: ^1.2.0
+
+  # Cloudinary for file storage
+  cloudinary_public: ^0.23.1
+
+  # File handling
+  file_picker: ^10.3.7
+
+  # Image processing for hash computation
+  image: ^4.1.7
+
+  # State management
+  flutter_riverpod: ^3.0.3
+
+  # Utilities
+  uuid: ^4.2.2
+  intl: ^0.20.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true

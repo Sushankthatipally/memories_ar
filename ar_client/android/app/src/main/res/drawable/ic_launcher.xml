@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    
+    <!-- Background rounded rectangle -->
+    <path
+        android:pathData="M4,4 L44,4 Q48,4 48,8 L48,40 Q48,44 44,44 L4,44 Q0,44 0,40 L0,8 Q0,4 4,4 Z"
+        android:fillColor="#F3F4F6"/>
+    
+    <!-- Rounded corner frames - Top Left -->
+    <path
+        android:pathData="M8,18 L8,12 Q8,8 12,8 L18,8"
+        android:strokeWidth="2"
+        android:strokeColor="#A855F7"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"/>
+    
+    <!-- Rounded corner frames - Top Right -->
+    <path
+        android:pathData="M30,8 L36,8 Q40,8 40,12 L40,18"
+        android:strokeWidth="2"
+        android:strokeColor="#3B82F6"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"/>
+    
+    <!-- Rounded corner frames - Bottom Right -->
+    <path
+        android:pathData="M40,30 L40,36 Q40,40 36,40 L30,40"
+        android:strokeWidth="2"
+        android:strokeColor="#8B5CF6"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"/>
+    
+    <!-- Rounded corner frames - Bottom Left -->
+    <path
+        android:pathData="M18,40 L12,40 Q8,40 8,36 L8,30"
+        android:strokeWidth="2"
+        android:strokeColor="#EC4899"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"/>
+    
+    <!-- Outer ring -->
+    <path
+        android:pathData="M24,24m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"
+        android:strokeWidth="1.5"
+        android:strokeColor="#8B5CF6"
+        android:strokeAlpha="0.3"
+        android:fillColor="#00000000"/>
+    
+    <!-- Center filled circle - outer -->
+    <path
+        android:pathData="M24,24m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0"
+        android:fillColor="#8B5CF6"/>
+    
+    <!-- Center filled circle - middle -->
+    <path
+        android:pathData="M24,24m-6,0a6,6 0,1 1,12 0a6,6 0,1 1,-12 0"
+        android:fillColor="#A855F7"/>
+    
+    <!-- Inner highlight -->
+    <path
+        android:pathData="M24,24m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.4"/>
+</vector>
