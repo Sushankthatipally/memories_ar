@@ -1,134 +1,82 @@
-# Memories - AR Photo Album
+# Memories
 
-Transform physical photos into AR experiences with video overlays using **ARCore + Flutter**!
+An AR app that brings your photo albums to life. Point your phone at a printed photo and watch the video memory play right on top of it.
 
-## ✨ Features
+Built this because I wanted something like those Harry Potter moving photos, but for real family memories.
 
-- 📸 **AR Video Overlay** - Point your phone at a photo to see videos play on top
-- 🔒 **Freeze Frame** - Lock video to screen for comfortable viewing
-- 🎬 **Cinematic Effects** - Smooth unfold animations and audio fade
-- 📳 **Haptic Feedback** - Feel when photos are detected
-- 🎨 **Premium UI** - Rounded video corners, scan guides, and polished design
+## What it does
 
-## 📱 How It Works
+- Scan any photo from your album and the associated video plays as an AR overlay
+- "Freeze Frame" mode lets you lock the video to screen so you don't have to hold your arm up the whole time
+- Haptic buzz when it detects a photo
+- Smooth animations, rounded corners, the whole premium feel
 
-1. **Browse Photos**: See AR-enabled photos from Firebase
-2. **Tap to Start**: Downloads and caches image/video locally
-3. **Point Camera**: ARCore detects the photo in real-time
-4. **Watch Video**: AR video overlay plays over detected photo
-5. **Freeze Frame**: Lock video to screen for comfortable viewing (solves arm fatigue!)
-6. **New Photo**: Automatically unlocks and switches when new photo detected
+## The problem it solves
 
-## 🎯 Quick Start
+Holding your phone over a photo album for 2+ minutes while watching a video is tiring. The freeze button lets you scan, lock, put the album down, and watch comfortably from the couch.
 
-### 1. Firebase Setup
+## Setup
 
-1. Create a Firebase project at [console.firebase.google.com](https://console.firebase.google.com)
-2. Add an Android app with package name `com.example.ar_client`
-3. Download `google-services.json` and place it in `android/app/`
-4. Enable Firestore Database
-5. Generate Firebase options:
-   ```bash
-   dart pub global activate flutterfire_cli
-   flutterfire configure
-   ```
+You'll need:
+- Flutter SDK
+- A Firebase project
+- Android device that supports ARCore
 
-### 2. Install & Run
+```
+# Get your google-services.json from Firebase console
+# Put it in android/app/
 
-```bash
 flutter pub get
 flutter run
 ```
 
-## 🏗️ Architecture
+## How it's built
 
-**Hybrid Design: Flutter UI + Native Android AR Engine**
-
-```
-┌─────────────────────────────────────────────────┐
-│                  Flutter UI                      │
-│  (Photo List, Resource Caching, Firebase)       │
-└─────────────────┬───────────────────────────────┘
-                  │ Method Channel
-┌─────────────────▼───────────────────────────────┐
-│             Native Android (Kotlin)              │
-│  ARCore + SceneView + TextureView Video         │
-└─────────────────────────────────────────────────┘
-```
-
-## 🚀 Key Features
-
-### AR Experience
-- ✅ **ARCore** hardware-accelerated tracking
-- ✅ **Real-time** photo detection
-- ✅ **Cinematic unfold** animation on detection
-- ✅ **Audio fade** in/out effects
-
-### Freeze Frame (New!)
-- ✅ **Lock button** to freeze video on screen
-- ✅ **Comfortable viewing** - put the photo album down
-- ✅ **Auto-unlock** when new photo detected
-- ✅ **Accessibility** - bridges AR discovery with video consumption
-
-### Premium UX
-- ✅ **Haptic feedback** on detection
-- ✅ **Rounded corners** on video (16dp)
-- ✅ **Scan guide** overlay with pulse animation
-- ✅ **Loading indicators**
-
-## 🛠️ Tech Stack
-
-| Layer | Technology |
-|-------|------------|
-| UI | Flutter 3.x |
-| Backend | Firebase Firestore |
-| Media CDN | Cloudinary |
-| AR Engine | ARCore + SceneView |
-| Video | TextureView + MediaPlayer |
-| Styling | CardView (rounded corners) |
-
-## 📝 Project Structure
+Flutter handles the UI and Firebase stuff. The actual AR tracking runs in native Kotlin using ARCore + SceneView. They talk through a method channel.
 
 ```
-ar_client/
-├── lib/
-│   ├── main.dart
-│   └── src/
-│       ├── screens/
-│       │   ├── ar_camera_screen.dart
-│       │   └── photo_list_screen.dart
-│       └── services/
-│           ├── firestore_service.dart
-│           └── resource_cache_service.dart
-│
-└── android/app/src/main/
-    ├── java/com/example/ar_client/
-    │   ├── ARActivity.kt          # AR Engine
-    │   └── MainActivity.kt        # Flutter Bridge
-    └── res/
-        ├── layout/activity_ar.xml
-        └── drawable/              # Icons & UI assets
+Flutter (Dart)
+    |
+    | Method Channel
+    v
+Native Android (Kotlin)
+    - ARCore for tracking
+    - TextureView for video
+    - CardView for rounded corners
 ```
 
-## 🧪 Testing
+## Project layout
 
-### Requirements
-- Android device with ARCore support
-- Camera permission
-- Photos uploaded via admin dashboard
-- Printed photos or high-quality screen display
+```
+lib/
+  main.dart
+  src/
+    screens/
+      ar_camera_screen.dart   # launch screen
+      photo_list_screen.dart  # browse photos
+    services/
+      firestore_service.dart
+      resource_cache_service.dart
 
-### Test Flow
-1. Launch app → See photo list
-2. Tap photo → Wait for download
-3. Point at printed photo → Video plays
-4. Tap lock button → Video freezes to screen
-5. Show new photo → Auto-unlocks and switches
+android/app/src/main/java/.../
+  ARActivity.kt    # where the AR magic happens
+  MainActivity.kt  # flutter bridge
+```
 
-## 📄 License
+## Tech
 
-MIT License - Feel free to use for your projects!
+- Flutter 3.x
+- Firebase Firestore
+- Cloudinary (media hosting)
+- ARCore + SceneView
+- Kotlin
 
----
+## Notes
 
-**Made with ❤️ using Flutter + ARCore**
+- Works best with printed photos, decent lighting
+- First scan downloads the video, then it's cached locally
+- When you show a new photo, it auto-unlocks from freeze mode and switches
+
+## License
+
+MIT
