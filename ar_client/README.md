@@ -18,6 +18,7 @@ Holding your phone over a photo album for 2+ minutes while watching a video is t
 ## Setup
 
 You'll need:
+
 - Flutter SDK
 - A Firebase project
 - Android device that supports ARCore
